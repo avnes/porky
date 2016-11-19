@@ -13,7 +13,7 @@ It is paramount to have a strategy in place to purge this metadata on a regular 
 Every project and developer submitting new composites must reflect on how often their metadata should be purged. Please note that only metadata for Terminated or Failed will be purged. Any asynchronous composite that is still in any form of RUNNING or waiting state will not be purged. This is taken care of by Porky's use of the standard purge API.
 
 ##Installation
-An installation of Oracle SOA Suite will contain an API for purging instance metadata. Utilizing this API, I have written a custom wrapper called porky_purge_api, which can help control what to purge, how to purge, and when to purge.
+An installation of Oracle® SOA Suite will contain an API for purging instance metadata. Utilizing this API, I have written a custom wrapper called porky_purge_api, which can help control what to purge, how to purge, and when to purge.
 
 1. Connect to the database as the user that owns the SOA database metadata. This user has a name on the format \<prefix>_SOAINFRA. For instance: SOA_SOAINFRA
 2. Once connected to the \<prefix>_SOAINFRA schema, run the build_porky.sql script
