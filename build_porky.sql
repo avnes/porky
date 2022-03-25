@@ -69,7 +69,7 @@ CREATE OR REPLACE PACKAGE BODY porky_purge_api AS
 
 	PROCEDURE purge IS
 		v_cube_num_rec NUMBER;
-		CURSOR c_purge_rules IS SELECT * FROM porky_purge_tbl WHERE purgeable=1 ORDER BY 1,2;
+		CURSOR c_purge_rules IS SELECT * FROM porky_purge_tbl WHERE purgeable=1 ORDER BY 1,2 ASC;
 	BEGIN
 		FOR l_purge_rules IN c_purge_rules LOOP
 			SELECT COUNT(*) INTO v_cube_num_rec FROM cube_instance WHERE composite_name = l_purge_rules.composite_name AND domain_name = l_purge_rules.soa_partition_name;
