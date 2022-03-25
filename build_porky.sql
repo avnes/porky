@@ -48,6 +48,7 @@ CREATE TABLE porky_purge_err_tbl (
 /
 
 CREATE OR REPLACE PACKAGE porky_purge_api AS
+	-- Will purge BPEL runtime audit data
 	PROCEDURE purge;
 END porky_purge_api;
 /
