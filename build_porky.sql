@@ -58,11 +58,7 @@ CREATE OR REPLACE PACKAGE BODY porky_purge_api AS
 
 	FUNCTION getBoolean(p_num_value IN NUMBER) RETURN BOOLEAN IS
 	BEGIN
-		IF p_num_value = 1 THEN
-			RETURN true;
-		ELSE
-			RETURN false;
-		END IF;
+		RETURN p_num_value = 1
 	EXCEPTION
 		WHEN OTHERS THEN
 			g_code := SQLCODE;
