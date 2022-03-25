@@ -101,7 +101,8 @@ END porky_purge_api;
 COMMIT
 /
 
-SELECT * FROM porky_purge_tbl
+SELECT composite_name, soa_partition_name, purgeable, max_runtime, retention_period, batch_size, ignore_state, contact_name 
+FROM porky_purge_tbl
 /
 
 BEGIN
@@ -117,7 +118,10 @@ BEGIN
 END;
 /
 
-SELECT * FROM dba_scheduler_jobs WHERE owner=USER AND job_name='PORKY_SOA_PURGE_SCHEDULED_JOB'
+SELECT job_name, job_type, schedule_name, schedule_type, start_date, repeat_interval, end_date, enabled, comments 
+FROM dba_scheduler_jobs 
+WHERE owner=USER 
+AND job_name='PORKY_SOA_PURGE_SCHEDULED_JOB'
 /
 
 -- The following code can be used to change when to run the job. For instance change the 'byhour' value.
