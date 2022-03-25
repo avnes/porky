@@ -88,9 +88,9 @@ CREATE OR REPLACE PACKAGE BODY porky_purge_api AS
 				composite_name => l_purge_rules.composite_name,
 				soa_partition_name => l_purge_rules.soa_partition_name);
 			SELECT COUNT(*) INTO v_cube_num_rec FROM cube_instance WHERE composite_name = l_purge_rules.composite_name AND domain_name = l_purge_rules.soa_partition_name;
-			INSERT INTO porky_purge_log_tbl VALUES(l_purge_rules.composite_name,l_purge_rules.soa_partition_name,l_purge_rules.purgeable,l_purge_rules.max_runtime,l_purge_rules.retention_period,l_purge_rules.batch_size,l_purge_rules.ignore_state,v_cube_num_rec,'Stop',SYSTIMESTAMP);
-			COMMIT;
+			INSERT INTO porky_purge_log_tbl VALUES(l_purge_rules.composite_name,l_purge_rules.soa_partition_name,l_purge_rules.purgeable,l_purge_rules.max_runtime,l_purge_rules.retention_period,l_purge_rules.batch_size,l_purge_rules.ignore_state,v_cube_num_rec,'Stop',SYSTIMESTAMP);			
 		END LOOP;
+		COMMIT;
 	EXCEPTION
 		WHEN OTHERS THEN
 			g_code := SQLCODE;
